@@ -15,7 +15,7 @@ const form = document.querySelector('form');
 const input = document.querySelector('#search-text');
 const buttonLoadMore = document.querySelector('.button');
 const loadElem = document.querySelector('.js-loader');
-const targetElem = document.querySelector('.js-target');
+// const targetElem = document.querySelector('.js-target');
 
 const params = {
   query: '',
@@ -46,7 +46,7 @@ form.addEventListener('submit', async e => {
   if (!params.query) return;
   input.value = '';
   showLoader();
-  // updateObserver();
+
   try {
     const data = await fetchImages(params.query, params.page, params.per_page); //чекаємо результат запиту
     await handleSearchResults(data.hits, params.page); //передаємо отримані зображення
@@ -97,30 +97,4 @@ function showSpinner() {
 }
 function hideSpinner() {
   loadElem.classList.add('hidden'); //сховати
-}
-
-//клас IntersectionObserver в JS-створюємо спостерігача observer
-const options = {
-  rootMargin: '0px',
-  threshold: 1,
-};
-
-const observer = new IntersectionObserver(arr => {
-  const info = arr[0];
-  console.log(info);
-
-  if (info.isIntersecting) {
-    fetchImages();
-  }
-}, options);
-
-//функція для observer
-function updateObserver() {
-  if (params.page < maxPage) {
-    console.log('+observer');
-    observer.observe(targetElem); //додаємо обсервера
-  } else {
-    console.log('-observer');
-    observer.unobserve(targetElem); //відключаємо обсервера
-  }
 }

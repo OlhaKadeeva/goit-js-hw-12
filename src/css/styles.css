@@ -223,9 +223,3 @@ ul {
 .button > .spinner.is-hidden {
   display: none;
 }
-
-.rectangle {
-  height: 100px;
-  width: 100px;
-  background-color: black;
-}
