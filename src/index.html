@@ -21,8 +21,27 @@
         </form>
       </search>
 
-      <p class="loader-box hidden"><span class="loader"></span></p>
       <ul class="gallery"></ul>
+
+      <div class="js-target rectangle"></div>
+
+      <div>
+        <button
+          type="button"
+          class="btn button js-btn-load hidden"
+          data-action="load-more"
+        >
+          Load more
+
+          <p class="loader-box hidden"><span class="loader"></span></p>
+
+          <span
+            class="js-loader spinner-border spinner-border-sm spinner hidden"
+            role="status"
+            aria-hidden="true"
+          ></span>
+        </button>
+      </div>
     </main>
 
     <script type="module" src="./main.js"></script>

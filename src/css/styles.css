@@ -113,6 +113,7 @@ ul {
 }
 
 .gallery {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
@@ -190,4 +191,41 @@ ul {
 
 .hidden {
   display: none;
+  opacity: 0;
+}
+
+/* Load more and scroll */
+
+.button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+  padding: 8px 16px;
+  color: #fff;
+  background-color: #4e75ff;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #6c8cff;
+}
+
+.button:focus {
+  border-color: #6c8cff;
+  outline: none;
+}
+
+.button.is-hidden {
+  display: none;
+}
+
+.button > .spinner.is-hidden {
+  display: none;
+}
+
+.rectangle {
+  height: 100px;
+  width: 100px;
+  background-color: black;
 }

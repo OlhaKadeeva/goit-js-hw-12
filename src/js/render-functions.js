@@ -1,13 +1,12 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 const gallery = document.querySelector('.gallery');
 const loaderBox = document.querySelector('.loader-box');
 
-export function renderImages(images) {
+export function renderImages(images, page) {
   const galleryHtml = images
     .map(
       ({
@@ -55,8 +54,11 @@ export function renderImages(images) {
           `
     )
     .join('');
-
-  gallery.innerHTML = galleryHtml;
+  if (page === 1) {
+    gallery.innerHTML = galleryHtml;
+  } else {
+    gallery.insertAdjacentHTML('beforeend', galleryHtml);
+  }
   lightbox.refresh();
   hideLoader();
 }
@@ -67,9 +69,9 @@ const lightbox = new SimpleLightbox('.gallery a', {
 });
 
 export function showLoader() {
-  gallery.classList.add('hidden');
+  // gallery.classList.add('hidden');
   loaderBox.classList.remove('hidden');
-  loaderBox.innerHTML = '"Wait, the image is loaded..."';
+  // loaderBox.innerHTML = '"Wait, the image is loaded..."';
 }
 
 export function hideLoader() {
@@ -102,5 +104,29 @@ export function showMessageErr() {
     messageColor: 'white',
     maxWidth: '432px',
     backgroundColor: '#EF4040',
+  });
+}
+export function showMessageTheEnd() {
+  iziToast.show({
+    position: 'bottomRight',
+    message: 'We are sorry, but you have reached the end of search results.',
+    close: `true`,
+    title: 'Info',
+    messageSize: '16px',
+    messageLineHeight: '24px',
+    messageColor: 'white',
+    maxWidth: '432px',
+    backgroundColor: '#EF4040',
+  });
+}
+
+//при натисканні на кнопку лоад мор плавний скрол
+export function scrollPage() {
+  const info = gallery.lastElementChild.getBoundingClientRect();
+  const height = info.height; //звертаємось до властивості висота в об'єкті
+  // console.log(height);
+  scrollBy({
+    behavior: 'smooth', //плавність прокручування
+    top: height * 3,
   });
 }
