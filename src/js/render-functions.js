@@ -69,9 +69,7 @@ const lightbox = new SimpleLightbox('.gallery a', {
 });
 
 export function showLoader() {
-  // gallery.classList.add('hidden');
   loaderBox.classList.remove('hidden');
-  // loaderBox.innerHTML = '"Wait, the image is loaded..."';
 }
 
 export function hideLoader() {
@@ -124,7 +122,6 @@ export function showMessageTheEnd() {
 export function scrollPage() {
   const info = gallery.lastElementChild.getBoundingClientRect();
   const height = info.height; //звертаємось до властивості висота в об'єкті
-  // console.log(height);
   scrollBy({
     behavior: 'smooth', //плавність прокручування
     top: height * 3,
