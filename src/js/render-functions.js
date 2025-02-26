@@ -107,7 +107,7 @@ export function showMessageErr() {
 export function showMessageTheEnd() {
   iziToast.show({
     position: 'bottomRight',
-    message: 'We are sorry, but you have reached the end of search results.',
+    message: "We're sorry, but you've reached the end of search results.",
     close: `true`,
     title: 'Info',
     messageSize: '16px',
@@ -122,7 +122,7 @@ export function showMessageTheEnd() {
 export function scrollPage() {
   const info = gallery.lastElementChild.getBoundingClientRect();
   const height = info.height; //звертаємось до властивості висота в об'єкті
-  scrollBy({
+  window.scrollBy({
     behavior: 'smooth', //плавність прокручування
     top: height * 3,
   });
